@@ -5,7 +5,7 @@ import * as fs from 'fs'
 async function run(): Promise<void> {
   try {
     const path = await tc.downloadTool(
-      'https://github.com/fwilhe2/studious-guacamole/releases/download/2020-09-18T19-23-39UTC/app-linux.kexe'
+      'https://github.com/fwilhe2/studious-guacamole/releases/latest/download/app-linux.kexe'
     )
     fs.chmodSync(path, 0o775)
     core.addPath(path)
