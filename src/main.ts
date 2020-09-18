@@ -1,16 +1,14 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as tc from '@actions/tool-cache'
+import * as fs from 'fs'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    const path = await tc.downloadTool(
+      'https://github.com/fwilhe2/studious-guacamole/releases/download/2020-09-18T19-23-39UTC/app-linux.kexe'
+    )
+    fs.chmodSync(path, 0o775)
+    core.addPath(path)
   } catch (error) {
     core.setFailed(error.message)
   }
