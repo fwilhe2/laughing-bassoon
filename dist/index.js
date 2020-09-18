@@ -106,6 +106,7 @@ function run() {
             const path = yield tc.downloadTool('https://github.com/fwilhe2/studious-guacamole/releases/download/2020-09-18T19-23-39UTC/app-linux.kexe');
             fs.chmodSync(path, 0o775);
             core.addPath(path);
+            core.setOutput("exe", path);
         }
         catch (error) {
             core.setFailed(error.message);

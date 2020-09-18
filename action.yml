@@ -6,6 +6,9 @@ inputs:
     required: true
     description: 'input description here'
     default: 'default value if applicable'
+outputs:
+  exe:
+    description: path of the exe
 runs:
   using: 'node12'
   main: 'dist/index.js'

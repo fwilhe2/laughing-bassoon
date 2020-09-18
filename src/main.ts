@@ -9,6 +9,7 @@ async function run(): Promise<void> {
     )
     fs.chmodSync(path, 0o775)
     core.addPath(path)
+    core.setOutput('exe', path)
   } catch (error) {
     core.setFailed(error.message)
   }
