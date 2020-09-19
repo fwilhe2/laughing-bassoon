@@ -103,10 +103,10 @@ const fs = __importStar(__webpack_require__(747));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const path = yield tc.downloadTool('https://github.com/fwilhe2/studious-guacamole/releases/download/2020-09-18T19-23-39UTC/app-linux.kexe');
+            const path = yield tc.downloadTool('https://github.com/fwilhe2/studious-guacamole/releases/latest/download/app-linux.kexe');
             fs.chmodSync(path, 0o775);
             core.addPath(path);
-            core.setOutput("exe", path);
+            core.setOutput('exe', path);
         }
         catch (error) {
             core.setFailed(error.message);
